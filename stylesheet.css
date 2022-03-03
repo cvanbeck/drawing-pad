@@ -9,15 +9,17 @@ body {
 .box {
     margin: 12px;
     border: 20px;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
 }
-.test {
+.test, .test2 {
     
     padding: 12px;
     background-color: rgb(255, 255, 255);
     border: solid 1px rgba(49, 49, 49, 0.192);
-    
-
+}
+.test {
+    display: inline-flex;
 }
 
 .test:hover{
