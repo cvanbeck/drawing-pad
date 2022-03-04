@@ -8,15 +8,9 @@ body {
     
 }
 .grid{
-    border: 0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
     width: 480px;
     height: 480px;
-    
 
 }
 .box {
@@ -27,20 +21,10 @@ body {
 }
 .test{
     
-    padding: 12px;
     background-color: rgb(255, 255, 255);
-    border: solid 1px rgba(49, 49, 49, 0.192);
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-
-}
-
-.anothertest {
-    padding: 12px;
-    background-color: rgb(255, 255, 255);
-    border: solid 1px rgba(49, 49, 49, 0.192);
+    border: 1px rgba(49, 49, 49, 0.192);
     
+
 }
 
 .test:hover{
