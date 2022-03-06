@@ -19,7 +19,7 @@ body {
     display: flex;
     
 }
-.test{
+.actual-box{
     
     background-color: rgb(255, 255, 255);
     border: 1px rgba(49, 49, 49, 0.192);
@@ -27,7 +27,7 @@ body {
 
 }
 
-.test:hover{
+.actual-box:hover{
     background-color: black;
 }
 
