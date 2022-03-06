@@ -13,13 +13,8 @@ body {
     height: 480px;
 
 }
-.box {
-    margin: 12px;
-    border: 20px;
-    display: flex;
-    
-}
-.actual-box{
+
+box{
     
     background-color: rgb(255, 255, 255);
     border: 1px rgba(49, 49, 49, 0.192);
@@ -27,7 +22,10 @@ body {
 
 }
 
-.actual-box:hover{
+box:hover{
     background-color: black;
 }
 
+.black-box {
+    background-color: black;
+}
