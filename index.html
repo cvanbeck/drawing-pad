@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" draggable="false">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,8 @@
     <link href="stylesheet.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="buttons-flex">
+<body draggable="false">
+    <div class="buttons-flex" draggable="false">
         <div><button id="clear-grid" class="button">Clear grid</button></div>
         <div><button id="black-brush" class="button active-button">Black brush</button></div>
         <div><button id="green-brush" class="button">Green brush</button></div>
@@ -18,8 +18,8 @@
         <div><button id="red-brush" class="button">Red brush</button></div>
         <div><button id="eraser" class="button">Eraser</button></div>
     </div>
-    <div class="grid-container">
-        <div class="grid"></div>
+    <div class="grid-container" draggable="false">
+        <div class="grid" draggable="false" ></div>
     </div>
     <div class="empty-container">
         <button class="resize-grid">Resize Grid</prompt>

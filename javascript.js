@@ -5,6 +5,7 @@ function createGrid(size) {
     for (let i = 0; i < (size * size);) {
         const grid = document.querySelector(".grid");
         const box = document.createElement("box");
+        box.setAttribute("draggable", "false")
         grid.appendChild(box);
         ++i
     }
@@ -24,6 +25,7 @@ function resizeGrid(newSize) {
     setupBoxes()
 };
 
+// When grid is resized the eventlisteners needed to be readded to the new boxes.
 function setupBoxes() {
     allBox = document.querySelectorAll("box")
     allBox.forEach((allBox) => {
@@ -38,7 +40,7 @@ function setupBoxes() {
             console.log(currentBrush)
             allBox.removeAttribute('class')
             allBox.classList.add(currentBrush)
-            
+
         });
     })
     allBox.forEach((allBox) => {
@@ -50,7 +52,17 @@ function setupBoxes() {
             }
         })
     })
+    allBox.forEach((allBox) => {
+        allBox.addEventListener("dragover", () => {
+            if (isMouseDown === 1) {
+                console.log("YES")
+                allBox.removeAttribute("class")
+                allBox.classList.add(currentBrush)
+            }
+        })
+    })
 }
+
 
 function generateGridAgain(newSize) {
     createGrid(newSize)
@@ -58,6 +70,8 @@ function generateGridAgain(newSize) {
 }
 
 let cssBody = document.querySelector(":root")
+
+
 
 function eraserBrushChange() {
     currentBrush = "eraser"
@@ -135,6 +149,16 @@ bodySelect.addEventListener("mouseup", () => {
     console.log(isMouseDown)
 })
 
+bodySelect = document.querySelector("body")
+bodySelect.addEventListener("dragstart", () => {
+    isMouseDown = 1
+    console.log(isMouseDown)
+})
+bodySelect.addEventListener("dragend", () => {
+    isMouseDown = 0;
+    console.log(isMouseDown)
+})
+
 
 let allBox = document.querySelectorAll("box")
 allBox.forEach((allBox) => {
@@ -142,7 +166,7 @@ allBox.forEach((allBox) => {
         console.log(currentBrush)
         allBox.removeAttribute('class')
         allBox.classList.add(currentBrush)
-        
+
     });
 })
 
@@ -156,6 +180,15 @@ allBox.forEach((allBox) => {
     })
 })
 
+allBox.forEach((allBox) => {
+    allBox.addEventListener("dragover", () => {
+        if (isMouseDown === 1) {
+            console.log("YES")
+            allBox.removeAttribute("class")
+            allBox.classList.add(currentBrush)
+        }
+    })
+})
 
 let allButtons = document.querySelectorAll("button")
 allButtons.forEach((allButtons) => {

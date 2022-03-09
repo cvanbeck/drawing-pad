@@ -19,6 +19,7 @@ body {
     width: 480px;
     height: 480px;
     outline: ridge 30px #b71f1f;
+    
 
 }
 
@@ -26,6 +27,7 @@ box{
     
     background-color: rgb(255, 255, 255);
     border: 1px rgba(49, 49, 49, 0.192);
+    
     
 
 }
