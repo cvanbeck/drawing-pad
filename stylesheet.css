@@ -27,6 +27,7 @@ box{
     
     background-color: rgb(255, 255, 255);
     border: 1px rgba(49, 49, 49, 0.192);
+    cursor: default;
     
     
 
@@ -79,7 +80,7 @@ box:hover{
 button {
     font-weight: bold;
     font-size: 16px;
-    
+    cursor: pointer;
 
 }
 
