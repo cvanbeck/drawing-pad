@@ -1,3 +1,8 @@
+:root{ 
+    --current-background-color: black;
+}
+
+
 body {
     display: flex;
     justify-content: center;
@@ -23,9 +28,21 @@ box{
 }
 
 box:hover{
-    background-color: black;
+    background-color: var(--current-background-color);
 }
 
 .black-box {
     background-color: black;
+}
+
+.red-box {
+    background-color: #E53629;
+}
+
+.blue-box {
+    background-color: #4149C3;
+}
+
+.green-box {
+    background-color: #2CD23E;
 }

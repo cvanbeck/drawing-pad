@@ -11,18 +11,59 @@ function createGrid(size) {
 }
 createGrid(gridSize)
 
+let cssBody = document.querySelector(":root")
+
 function eraserBrushChange() {
     currentBrush = "eraser"
 }
 function blackBrushChange() {
     currentBrush = "black-box"
+
+}
+function redBrushChange() {
+    currentBrush = "red-box"
+}
+
+function blueBrushChange() {
+    currentBrush = "blue-box"
+}
+
+function greenBrushChange() {
+    currentBrush = "green-box"
 }
 
 let eraserBrushButton = document.querySelector("#eraser")
 eraserBrushButton.addEventListener("click", eraserBrushChange);
+eraserBrushButton.addEventListener("click", () => {
+    cssBody.style.setProperty("--current-background-color", "white");
+});
 
 let blackBrushButton = document.querySelector("#black-brush")
 blackBrushButton.addEventListener("click", blackBrushChange);
+blackBrushButton.addEventListener("click", () => {
+    cssBody.style.setProperty("--current-background-color", "black");
+});
+
+let redBrushButton = document.querySelector("#red-brush");
+redBrushButton.addEventListener("click", redBrushChange);
+redBrushButton.addEventListener("click", () => {
+    cssBody.style.setProperty("--current-background-color", "#E53629")
+    console.log("RED");
+});
+
+let blueBrushButton = document.querySelector("#blue-brush");
+blueBrushButton.addEventListener("click", blueBrushChange);
+blueBrushButton.addEventListener("click", () => {
+    cssBody.style.setProperty("--current-background-color", "#4149C3");
+});
+
+let greenBrushButton = document.querySelector("#green-brush");
+greenBrushButton.addEventListener("click", greenBrushChange);
+greenBrushButton.addEventListener("click", () => {
+    cssBody.style.setProperty("--current-background-color", "#2CD23E");
+});
+
+
 
 let clearGridButton = document.querySelector("#clear-grid")
 clearGridButton.addEventListener("click", () => {
@@ -39,6 +80,5 @@ allBox.forEach((allBox) => {
         console.log(currentBrush)
         allBox.removeAttribute('class')
         allBox.classList.add(currentBrush)
-        
     });
 });
