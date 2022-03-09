@@ -1,4 +1,5 @@
-let gridSize = 24
+let currentBrush = "black-box"
+let gridSize = 10
 function createGrid(size) {
     for (let i = 0; i < (size * size);) {
         const grid = document.querySelector(".grid");
@@ -8,16 +9,36 @@ function createGrid(size) {
     }
     document.getElementsByClassName("grid")[0].style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 }
-
 createGrid(gridSize)
 
-/* To draw a box, we need it to tell us which number the box has to find it's numbers and then we can
-add another class to this box so that only it gets coloured */ 
+function eraserBrushChange() {
+    currentBrush = "eraser"
+}
+function blackBrushChange() {
+    currentBrush = "black-box"
+}
+
+let eraserBrushButton = document.querySelector("#eraser")
+eraserBrushButton.addEventListener("click", eraserBrushChange);
+
+let blackBrushButton = document.querySelector("#black-brush")
+blackBrushButton.addEventListener("click", blackBrushChange);
+
+let clearGridButton = document.querySelector("#clear-grid")
+clearGridButton.addEventListener("click", () => {
+    allBox.forEach((allBox) => {
+        allBox.removeAttribute("class")
+    })
+})
+
+
 
 let allBox = document.querySelectorAll("box")
 allBox.forEach((allBox) => {
     allBox.addEventListener("click", () => {
-        allBox.classList.add("black-box")
-
+        console.log(currentBrush)
+        allBox.removeAttribute('class')
+        allBox.classList.add(currentBrush)
+        
     });
 });
