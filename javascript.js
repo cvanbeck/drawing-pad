@@ -1,6 +1,7 @@
 let currentBrush = "black-box"
 let gridSize = 10
 function createGrid(size) {
+
     for (let i = 0; i < (size * size);) {
         const grid = document.querySelector(".grid");
         const box = document.createElement("box");
@@ -10,6 +11,33 @@ function createGrid(size) {
     document.getElementsByClassName("grid")[0].style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 }
 createGrid(gridSize)
+
+
+
+function resizeGrid(newSize) {
+    oldGrid = document.querySelectorAll("box");
+    oldGrid.forEach((oldGrid) => {
+        oldGrid.remove();
+    })
+    createGrid(newSize)
+    setupBoxes()
+};
+
+function setupBoxes() {
+    allBox = document.querySelectorAll("box")
+    allBox.forEach((allBox) => {
+        allBox.addEventListener("click", () => {
+            console.log(currentBrush)
+            allBox.removeAttribute('class')
+            allBox.classList.add(currentBrush)
+        });
+    });
+}
+
+function generateGridAgain(newSize) {
+    createGrid(newSize)
+    allBox = document.querySelectorAll("box");
+}
 
 let cssBody = document.querySelector(":root")
 
@@ -75,7 +103,7 @@ let clearGridButton = document.querySelector("#clear-grid")
 clearGridButton.addEventListener("click", () => {
     allBox.forEach((allBox) => {
         allBox.removeAttribute("class")
-        
+
     })
 })
 
@@ -89,9 +117,8 @@ allBox.forEach((allBox) => {
         allBox.classList.add(currentBrush)
     });
 })
+
 let allButtons = document.querySelectorAll("button")
-
-
 allButtons.forEach((allButtons) => {
     allButtons.addEventListener("click", () => {
         allButtons.classList.add("active-button")
@@ -99,8 +126,28 @@ allButtons.forEach((allButtons) => {
     });
 });
 
-function clearActiveEffect(){
+function clearActiveEffect() {
     allButtons.forEach((allButtons) => {
         allButtons.classList.remove("active-button")
     })
 }
+
+let resizeGridButton = document.querySelector(".resize-grid")
+resizeGridButton.addEventListener("click", () => {
+    gridSize = prompt("Enter new grid size (Max size is 64x64)");
+    if (gridSize < 64 && gridSize > 0) {
+        resizeGrid(gridSize);
+        resizeGridButton.classList.remove("active-button")
+    }
+    else if (gridSize >= 64) {
+        gridSize = 64;
+        resizeGrid(gridSize);
+        resizeGridButton.classList.remove("active-button");
+    }
+    else {
+        alert("Grid size cannot be 0, set to default instead")
+        resizeGrid(10);
+        resizeGridButton.classList.remove("active-button");
+    }
+    console.log(gridSize)
+})
