@@ -53,7 +53,7 @@ box:hover{
 .buttons-flex {
     display:flex;
     flex-direction: column;
-    align-content: flex-end;
+    align-content: flex-start;
     align-items: flex-end;
     gap: 5px;
 
