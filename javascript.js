@@ -36,12 +36,15 @@ let eraserBrushButton = document.querySelector("#eraser")
 eraserBrushButton.addEventListener("click", eraserBrushChange);
 eraserBrushButton.addEventListener("click", () => {
     cssBody.style.setProperty("--current-background-color", "white");
+    blackBrushButton.classList.remove("active-button")
+    clearActiveEffect()
 });
 
 let blackBrushButton = document.querySelector("#black-brush")
 blackBrushButton.addEventListener("click", blackBrushChange);
 blackBrushButton.addEventListener("click", () => {
     cssBody.style.setProperty("--current-background-color", "black");
+    clearActiveEffect()
 });
 
 let redBrushButton = document.querySelector("#red-brush");
@@ -49,18 +52,21 @@ redBrushButton.addEventListener("click", redBrushChange);
 redBrushButton.addEventListener("click", () => {
     cssBody.style.setProperty("--current-background-color", "#E53629")
     console.log("RED");
+    clearActiveEffect()
 });
 
 let blueBrushButton = document.querySelector("#blue-brush");
 blueBrushButton.addEventListener("click", blueBrushChange);
 blueBrushButton.addEventListener("click", () => {
     cssBody.style.setProperty("--current-background-color", "#4149C3");
+    clearActiveEffect()
 });
 
 let greenBrushButton = document.querySelector("#green-brush");
 greenBrushButton.addEventListener("click", greenBrushChange);
 greenBrushButton.addEventListener("click", () => {
     cssBody.style.setProperty("--current-background-color", "#2CD23E");
+    clearActiveEffect()
 });
 
 
@@ -69,6 +75,7 @@ let clearGridButton = document.querySelector("#clear-grid")
 clearGridButton.addEventListener("click", () => {
     allBox.forEach((allBox) => {
         allBox.removeAttribute("class")
+        
     })
 })
 
@@ -81,4 +88,19 @@ allBox.forEach((allBox) => {
         allBox.removeAttribute('class')
         allBox.classList.add(currentBrush)
     });
+})
+let allButtons = document.querySelectorAll("button")
+
+
+allButtons.forEach((allButtons) => {
+    allButtons.addEventListener("click", () => {
+        allButtons.classList.add("active-button")
+        clearGridButton.classList.remove("active-button")
+    });
 });
+
+function clearActiveEffect(){
+    allButtons.forEach((allButtons) => {
+        allButtons.classList.remove("active-button")
+    })
+}
