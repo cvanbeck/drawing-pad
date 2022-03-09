@@ -10,6 +10,7 @@ function createGrid(size) {
     }
     document.getElementsByClassName("grid")[0].style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 }
+// Creates inital grid 
 createGrid(gridSize)
 
 
@@ -32,6 +33,23 @@ function setupBoxes() {
             allBox.classList.add(currentBrush)
         });
     });
+    allBox.forEach((allBox) => {
+        allBox.addEventListener("mousedown", () => {
+            console.log(currentBrush)
+            allBox.removeAttribute('class')
+            allBox.classList.add(currentBrush)
+            
+        });
+    })
+    allBox.forEach((allBox) => {
+        allBox.addEventListener("mouseover", () => {
+            if (isMouseDown === 1) {
+                console.log("YES")
+                allBox.removeAttribute("class")
+                allBox.classList.add(currentBrush)
+            }
+        })
+    })
 }
 
 function generateGridAgain(newSize) {
@@ -106,17 +124,38 @@ clearGridButton.addEventListener("click", () => {
 
     })
 })
-
+let isMouseDown = 0
+bodySelect = document.querySelector("body")
+bodySelect.addEventListener("mousedown", () => {
+    isMouseDown = 1
+    console.log(isMouseDown)
+})
+bodySelect.addEventListener("mouseup", () => {
+    isMouseDown = 0;
+    console.log(isMouseDown)
+})
 
 
 let allBox = document.querySelectorAll("box")
 allBox.forEach((allBox) => {
-    allBox.addEventListener("click", () => {
+    allBox.addEventListener("mousedown", () => {
         console.log(currentBrush)
         allBox.removeAttribute('class')
         allBox.classList.add(currentBrush)
+        
     });
 })
+
+allBox.forEach((allBox) => {
+    allBox.addEventListener("mouseover", () => {
+        if (isMouseDown === 1) {
+            console.log("YES")
+            allBox.removeAttribute("class")
+            allBox.classList.add(currentBrush)
+        }
+    })
+})
+
 
 let allButtons = document.querySelectorAll("button")
 allButtons.forEach((allButtons) => {
@@ -145,7 +184,7 @@ resizeGridButton.addEventListener("click", () => {
         resizeGridButton.classList.remove("active-button");
     }
     else {
-        alert("Grid size cannot be 0, set to default instead")
+        alert("Invalid input, grid set to default size")
         resizeGrid(10);
         resizeGridButton.classList.remove("active-button");
     }
